@@ -4,6 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+azure-cognitiveservices-vision-face = "*"
+asyncio = "*"
+requests = "*"
+pillow = "*"
+python-dotenv = "*"
+pynput = "*"
+
 
 [dev-packages]
 
