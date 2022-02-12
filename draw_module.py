@@ -8,14 +8,12 @@ import sys
 import time
 import uuid
 """
-import requests
 
 """
 from dotenv import load_dotenv
 import json
 from urllib.parse import urlparse
 """
-from io import BytesIO
 # To install this module, run:
 # python -m pip install Pillow
 from PIL import Image, ImageDraw
@@ -46,7 +44,7 @@ def getRectangle_ver2(faceDictionary):
 
     return ((left, top), (right, bottom))
 
-
+"""
 def drawFaceRectangles():
     # Download the image from the url
     response = requests.get(single_face_image_url)
@@ -60,7 +58,7 @@ def drawFaceRectangles():
 
     # Display the image in the default image browser.
     img.show()
-
+"""
 
 def drawFaceRectangles_ver2(image_11, array_11):
     img = Image.open(image_11)
