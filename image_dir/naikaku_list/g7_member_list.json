@@ -4,25 +4,36 @@
     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Fumio_Kishida_20211004.jpg/440px-Fumio_Kishida_20211004.jpg",
     "https://kishida.gr.jp/wp-content/uploads/2022/01/20210104kaiken_a01.jpeg",
     "https://kishida.gr.jp/wp-content/uploads/2020/09/984e21b6c51af2d344cd9433cc4aa1ed-353x500.jpg"
-    ]
-  },
+    ],
   "america":[
     "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Joe_Biden_presidential_portrait.jpg/500px-Joe_Biden_presidential_portrait.jpg",
     "https://afpbb.ismcdn.jp/mwimgs/8/e/-/img_8ee262eb1e8a03bfd9c91cb1878f5479117820.jpg",
     "https://president.ismcdn.jp/mwimgs/0/9/-/img_094ea62f8ba1a016eea4873a924d03ad815161.jpg"
   ],
-  "doitsu":{
-
-  },
-  "igirisu":{
+  "igirisu":[
     "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Boris_Johnson_official_portrait_%28cropped%29.jpg/400px-Boris_Johnson_official_portrait_%28cropped%29.jpg",
     "https://jbpress.ismcdn.jp/mwimgs/0/e/1200mw/img_0e79190889fd84d5f271f8ae9e8a8b0b53334.jpg",
     "https://www.jiji.com/news/handmade/topic/d4_aum/jsn724-jpp034601444.jpg"
-  },
-  "canada":{
-
-  },
-  "italia":{
-
+  ],
+  "flance":[
+  "https://upload.wikimedia.org/wikipedia/commons/8/87/Emmanuel_Macron_in_July_2017.jpg",
+  "https://static.tokyo-np.co.jp/image/article/size1/0/2/6/a/026a3e1384e2dc0d2a0a68e6445014cf_1.jpg",
+  "https://www.newsweekjapan.jp/stories/assets_c/2020/03/reuter_20200317_114010-thumb-720xauto-188864.jpg"
+  ],
+  "italy":[
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mario_Draghi_2021_%28cropped%29.jpg/440px-Mario_Draghi_2021_%28cropped%29.jpg",
+  "https://www.jiji.com/news2/kiji_photos/202102/20210213at42S_p.jpg",
+  "https://www.cnn.co.jp/storage/2021/02/13/eaadff1a2706dbbc79d6e1c70f1ebf60/t/768/432/d/mario-draghi-italy-0203-super-169.jpg"
+  ],
+  "canada":[
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Trudeau_visit_White_House_for_USMCA_%28cropped%29.jpg/400px-Trudeau_visit_White_House_for_USMCA_%28cropped%29.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Trudeau_headshot_2008.jpg/340px-Trudeau_headshot_2008.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Justin_Trudeau_2021.jpg/440px-Justin_Trudeau_2021.jpg"
+  ],
+  "doitu":[
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Olaf_Scholz_2021_cropped.jpg/400px-Olaf_Scholz_2021_cropped.jpg",
+  "https://image.chess443.net/S2010/upload/2021112600003_1.jpg",
+  "https://www.jiji.com/news2/kiji_photos/202112/20211208at71S_p.jpg"
+  ],
   }
 }

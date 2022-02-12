@@ -40,30 +40,6 @@ face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 with open('image_list.json') as f:
     jsn = json.load(f)
 
-""" ---------- TEST section START ---------- """
-
-"""prepare URL and file name"""
-"""#
-# Detect a face in an image that contains a single face
-single_face_image_url = jsn["single_img_url"]["sample3"]
-single_image_name = os.path.basename(single_face_image_url)
-#"""
-"""  -- Create detected_faces_client --  """
-"""#
-# We use detection model 3 to get better performance.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
-if not detected_faces:
-    raise Exception('No face detected from image {}'.format(single_image_name))
-else:
-    count = 1
-    for detect_face in detected_faces:
-        print(detect_face)
-        count += 1
-    print('{}人検出'.format(count - 1))
-#"""
-
-""" ---------------- END ------------------ """
-
 
 def main():
     """Create PERSON GROUP ID"""
@@ -86,25 +62,20 @@ def main():
 
     """person group の中のpersonを作る"""
     # Define woman friend
-    woman = face_client.person_group_person.create(PERSON_GROUP_ID, "Woman")
-    container.append({'person': 'Woman', 'data': {'name': 'Woman', 'person_ID': woman.person_id}})
-    print("person_group_person person_id {}".format(woman.person_id))
+    japan_g = face_client.person_group_person.create(PERSON_GROUP_ID, "japan")
+    container.append({'person': 'japan', 'data': {'name': 'japan', 'person_ID': japan_g.person_id}})
+    print("person_group_person person_id {}".format(japan_g.person_id))
     # Define man friend
-    man = face_client.person_group_person.create(PERSON_GROUP_ID, "Man")
-    container.append({'person': 'Man', 'data': {'name': 'Man', 'person_ID': man.person_id}})
-    print("person_group_person person_id {}".format(man.person_id))
+    america_g = face_client.person_group_person.create(PERSON_GROUP_ID, "america")
+    container.append({'person': 'america', 'data': {'name': 'america', 'person_ID': america_g.person_id}})
+    print("person_group_person person_id {}".format(america_g.person_id))
     # Define child friend
-    child = face_client.person_group_person.create(PERSON_GROUP_ID, "Child")
-    container.append({'person': 'Child', 'data': {'name': 'child', 'person_ID': child.person_id}})
-    print("person_group_person person_id {}".format(child.person_id))
+    igirisu_g = face_client.person_group_person.create(PERSON_GROUP_ID, "igirisu")
+    container.append({'person': 'igirisu', 'data': {'name': 'igirisu', 'person_ID': igirisu_g.person_id}})
+    print("person_group_person person_id {}".format(igirisu_g.person_id))
     # Find all jpeg images of friends in working directory
 
     """ルートから　*jpgを取得　ファイル名からグループを振り分けるためifでフィルター"""
-    # -->> from local file
-    woman_images = [file for file in glob.glob('image_dir/*.jpg') if file.startswith("image_dir/w")]
-    man_images = [file for file in glob.glob('image_dir/*.jpg') if file.startswith("image_dir/m")]
-    child_images = [file for file in glob.glob('image_dir/*.jpg') if file.startswith("image_dir/ch")]
-
     # -->> from url file
     with open('image_dir/naikaku_list/g7_member_list.json') as f:
         jsn = json.load(f)
@@ -118,25 +89,25 @@ def main():
     print(igirisu)
     # image array 確認
     print('container:', container)
-    print('woman_images:', woman_images)
-    print('man_images:', man_images)
-    print('child_images:', child_images)
+    print('japan:', japan)
+    print('america:', america)
+    print('igirisu:', igirisu)
 
     """.add_face_from_streamを通して画像ファイルを追加していく"""
     # Add to a woman person
-    for image in woman_images:
-        w = open(image, 'r+b')
-        face_client.person_group_person.add_face_from_stream(PERSON_GROUP_ID, woman.person_id, w)
+    for image in japan:
+        # w = open(image, 'r+b')
+        face_client.person_group_person.add_face_from_url(PERSON_GROUP_ID, japan_g.person_id, image)
 
     # Add to a man person
-    for image in man_images:
-        m = open(image, 'r+b')
-        face_client.person_group_person.add_face_from_stream(PERSON_GROUP_ID, man.person_id, m)
+    for image in america:
+        # m = open(image, 'r+b')
+        face_client.person_group_person.add_face_from_url(PERSON_GROUP_ID, america_g.person_id, image)
 
     # Add to a child person
-    for image in child_images:
-        ch = open(image, 'r+b')
-        face_client.person_group_person.add_face_from_stream(PERSON_GROUP_ID, child.person_id, ch)
+    for image in igirisu:
+        # ch = open(image, 'r+b')
+        face_client.person_group_person.add_face_from_url(PERSON_GROUP_ID, igirisu_g.person_id, image)
 
     print('-------------------------------------savepoint-------------------------------------')
     '''
@@ -162,8 +133,10 @@ def main():
     Identify a face against a defined PersonGroup
     '''
     # Group image for testing against
-    test_image_array = glob.glob('test_image_dir/test-image-person-group.jpg')
+    test_image_array = glob.glob('test_image_dir/287372b32bafc0a65daabbbb31509e5349859.jpg')
     image = open(test_image_array[0], 'r+b')
+    # image = "test_image_dir/287372b32bafc0a65daabbbb31509e5349859.jpg"
+    # img = open(image, 'r+b')
 
     print('Pausing for 60 seconds to avoid triggering rate limit on free account...')
     time.sleep(60)
@@ -201,15 +174,20 @@ def main():
     for rest in results:
         for cont in container:
             print(cont)
-            if cont['person'] == 'Man':
-                if rest.candidates[0].person_id == cont['data']['person_ID']:
-                    # if rest.candidates[0].person_id == cont["person_ID"]:
-                    print('------')
-                    print(cont['data']["name"])
-                    print(rest.additional_properties['react'])
-                    messag = rest.additional_properties['react']
-                    print(messag)
-                    draw.drawFaceRectangles_ver2(test_image_array[0], rest.additional_properties['react'])
+            # 人物フィルター
+            if cont['person'] == 'igirisu':
+                if len(rest.candidates) > 0:
+                    if rest.candidates[0].person_id == cont['data']['person_ID']:
+                        # if rest.candidates.person_id == cont['data']['person_ID']:
+                        # if rest.candidates[0].person_id == cont["person_ID"]:
+                        print('------')
+                        print(cont['data']["name"])
+                        print(rest.additional_properties['react'])
+                        messag = rest.additional_properties['react']
+                        print(messag)
+                        draw.drawFaceRectangles_ver2(test_image_array[0], rest.additional_properties['react'],
+                                                     cont['data']["name"])
+                    # draw.drawText(test_image_array[0])
 
     # for cont in container:
     #    if results[0].candidates[0].person_id == cont["person_ID"]:
