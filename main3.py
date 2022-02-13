@@ -173,7 +173,7 @@ def main():
     Identify a face against a defined PersonGroup
     '''
     # Group image for testing against
-    test_image_array = glob.glob('test_image_dir/face_api_test6.png')
+    test_image_array = glob.glob('test_image_dir/face_api_test7.png')
     image = open(test_image_array[0], 'r+b')
     # image = "test_image_dir/287372b32bafc0a65daabbbb31509e5349859.jpg"
     # img = open(image, 'r+b')
