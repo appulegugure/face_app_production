@@ -231,7 +231,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# 写真リストを動的に
-# image draw変更
-# 後で消します
