@@ -16,7 +16,7 @@ from urllib.parse import urlparse
 """
 # To install this module, run:
 # python -m pip install Pillow
-from PIL import Image, ImageDraw
+from PIL import ImageDraw
 
 """
 from azure.cognitiveservices.vision.face import FaceClient
@@ -70,13 +70,13 @@ def drawFaceRectangles():
 """
 
 
-def drawFaceRectangles_ver2(image_11, array_11, text="who are you?", ):
-    img = Image.open(image_11)
+def drawFaceRectangles_ver2(image_11, array_11, img, text="who are you?"):
+    # img = Image.open(image_11)
     # For each face returned use the face rectangle and draw a red box.
     print('Drawing rectangle around face... see popup for results.')
     draw = ImageDraw.Draw(img)
     draw.rectangle(getRectangle_ver2(array_11), outline='red', width=4)
-    textcolor = (56, 60, 60)
+    textcolor = (255, 0, 0)
     rectcolor = (255, 0, 0)
     textsize = 14
     linewidth = 4
@@ -88,7 +88,7 @@ def drawFaceRectangles_ver2(image_11, array_11, text="who are you?", ):
     # draw.rectangle([getTextPos(array_11), (left_f + txw, top_g)], \
     # outline=rectcolor, fill=rectcolor, width=linewidth)
     # Display the image in the default image browser.
-    img.show()
+    # img.show()
 
 
 def drawText(img):

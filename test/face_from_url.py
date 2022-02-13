@@ -1,4 +1,5 @@
 """import"""
+import glob
 import os
 
 from azure.cognitiveservices.vision.face import FaceClient
@@ -28,15 +29,18 @@ for face in faces:
     print('face_ids_and_react:', face_ids_and_react)
 """
 
-single_face_image_url = "https://2019.images.forbesjapan.media/articles/28000/28737/photos/410x615/287372b32bafc0a65daabbbb31509e5349859.jpg"
-single_image_name = os.path.basename(single_face_image_url)
+test_image_array = glob.glob('../test_image_dir/face_api_test1.png')
+image = open('../test_image_dir/face_api_test1.png', 'r+b')
+
 # We use detection model 3 to get better performance.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
+print('____point 1____')
+detected_faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
+print('____point 2____')
 
 face_ids_and_react = []
 
 if not detected_faces:
-    raise Exception('No face detected from image {}'.format(single_image_name))
+    raise Exception('No face detected from image {}')
 else:
     for face in detected_faces:
         face_ids_and_react.append({'faceID': face.face_id, 'react': face.face_rectangle})
